@@ -186,6 +186,21 @@ class DoubleLinkedList {
         return deletedTail;
     }
 
+    forEach(callback) {
+        if(typeof callback !== 'function') {
+            throw new Error('.forEach(cb) expects a callback');
+        }
+
+        let currentNode = this.head;
+
+        while(currentNode) {
+            callback(currentNode);
+            currentNode = currentNode.next;
+        }
+
+        return this;
+    }
+
     toString() {
         return this.toArray().map((node) => node.toString()).toString();
     }
