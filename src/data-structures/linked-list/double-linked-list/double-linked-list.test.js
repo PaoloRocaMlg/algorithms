@@ -172,4 +172,13 @@ describe("Double linked-list", () => {
         expect(linkedList.tail.value).toBe(2);
         expect(linkedList.tail.next).toBeNull();
     });
+
+    test("should iterated through the list items and executing a callback", () => {
+        const linkedList = new DoubleLinkedList();
+
+        linkedList.append(1).append(2).append(3);
+        linkedList.forEach((item) => {item.value = item.value + 1});
+
+        expect(linkedList.toString()).toBe("2,3,4");
+    });
 });
